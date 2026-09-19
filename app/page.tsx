@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lineLink = "https://lin.ee/nDC9CYG";
 
   return (
     <div className="bg-[#0b0e14] text-[#f1f5f9] min-h-screen font-sans scroll-smooth antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
@@ -44,7 +45,9 @@ export default function Home() {
           {/* Contact Buttons (Desktop) */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="#line-chatbot"
+              href={lineLink}
+              target="_blank"
+              rel="noreferrer"
               className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 border border-emerald-400/40 text-white px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider uppercase font-medium shadow-[0_0_12px_rgba(16,185,129,0.3)] transition duration-300"
             >
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
@@ -102,13 +105,15 @@ export default function Home() {
                 📸 บรรยากาศภายในร้าน
               </a>
               <a
-                href="#line-chatbot"
+                href={lineLink}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setIsMenuOpen(false)}
                 className="py-2 px-3 rounded-lg hover:bg-emerald-950/40 text-emerald-400 transition flex items-center justify-between"
               >
                 <span>💬 LINE Chatbot & จองคิว</span>
                 <span className="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded font-mono">
-                  SCAN
+                  ADD LINE
                 </span>
               </a>
               <a
@@ -128,7 +133,9 @@ export default function Home() {
                 📞 โทรออก
               </a>
               <a
-                href="#line-chatbot"
+                href={lineLink}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center justify-center gap-1.5 bg-emerald-600 text-white py-2.5 rounded-xl font-mono text-xs font-bold shadow-md"
               >
@@ -203,7 +210,9 @@ export default function Home() {
                 ดูบริการและราคา
               </a>
               <a
-                href="#line-chatbot"
+                href={lineLink}
+                target="_blank"
+                rel="noreferrer"
                 className="bg-emerald-600 hover:bg-emerald-500 text-white px-7 py-3.5 rounded-full font-semibold tracking-wider text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition duration-300 flex items-center justify-center gap-2"
               >
                 <span>💬</span> แชทผ่าน LINE Chatbot
@@ -450,7 +459,7 @@ export default function Home() {
             {/* View 4: Front View */}
             <div className="w-full h-[280px] sm:h-[350px] md:h-[420px] rounded-2xl overflow-hidden relative border border-gray-800 shadow-2xl group">
               <Image
-                src="/image_926161 copy.jpg"
+                src="/image_926161.jpg"
                 alt="วิวหน้าร้านพันธ์บาร์เบอร์"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
@@ -484,11 +493,11 @@ export default function Home() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
-                แชทสอบถาม  <span className="text-emerald-400">LINE Chatbot</span>
+                แชทสอบถาม & จองคิวผ่าน <span className="text-emerald-400">LINE Chatbot</span>
               </h2>
 
               <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed font-light">
-                สะดวก รวดเร็ว! คุณสามารถแสกน QR Code นี้ หรือกดปุ่มด้านล่างเพื่อแชทสอบถามรายละเอียด เช็คคิวตัดผม กับ LINE Chatbot ของร้านพันธ์บาร์เบอร์ได้ทันที
+                สะดวก รวดเร็ว! คุณสามารถแสกน QR Code นี้ หรือคลิกปุ่มแอดไลน์ด้านล่างเพื่อแชทสอบถามรายละเอียด เช็คคิวตัดผม กับ LINE Chatbot ของร้านพันธ์บาร์เบอร์ได้ทันที
               </p>
 
               <div className="space-y-2.5 pt-1 text-left inline-block md:block">
@@ -498,18 +507,34 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-                  เช็คเวลาทำการ
+                  เช็คเวลาทำการและสอบถามคิวตัดผม
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
                   พูดคุยกับช่างตัดผมโดยตรง
                 </div>
               </div>
+
+              <div className="pt-2">
+                <a
+                  href={lineLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.35)] transition duration-300"
+                >
+                  <span>📲</span> คลิกเพื่อแอดไลน์ / เปิดแชท LINE ทันที
+                </a>
+              </div>
             </div>
 
-            {/* QR Code Container */}
-            <div className="flex flex-col items-center justify-center pt-2 md:pt-0">
-              <div className="relative p-4 sm:p-5 bg-white rounded-3xl shadow-2xl border-4 border-emerald-500/60 group hover:scale-105 transition duration-300">
+            {/* QR Code Container (Clickable) */}
+            <a
+              href={lineLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center justify-center pt-2 md:pt-0 group cursor-pointer"
+            >
+              <div className="relative p-4 sm:p-5 bg-white rounded-3xl shadow-2xl border-4 border-emerald-500/60 group-hover:scale-105 transition duration-300">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
                   <Image
                     src="/line-qr.png"
@@ -519,14 +544,14 @@ export default function Home() {
                   />
                 </div>
                 <div className="absolute -top-3 -right-3 bg-emerald-500 text-black font-bold font-mono text-[10px] px-3 py-1 rounded-full uppercase shadow-md">
-                  Scan Me
+                  Click or Scan
                 </div>
               </div>
 
-              <p className="text-emerald-400 text-[11px] sm:text-xs font-mono tracking-widest uppercase mt-4 text-center">
-                📲 แสกนด้วยแอป LINE บนมือถือ
+              <p className="text-emerald-400 text-[11px] sm:text-xs font-mono tracking-widest uppercase mt-4 text-center group-hover:underline">
+                📲 แสกนด้วยแอป LINE หรือคลิกที่นี่เพื่อเปิดแชท
               </p>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -572,6 +597,21 @@ export default function Home() {
                   <div>
                     <span className="text-[10px] text-gray-500 block font-mono">PHONE NUMBER</span>
                     <span className="font-mono text-xs sm:text-sm text-gray-200 group-hover:text-red-400 transition">089-859-9742</span>
+                  </div>
+                </a>
+
+                <a
+                  href={lineLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-4 text-sm sm:text-base hover:text-emerald-400 transition group w-fit"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-emerald-950/60 border border-emerald-500/50 flex items-center justify-center font-mono text-xs font-bold text-emerald-400 group-hover:border-emerald-400 group-hover:scale-105 transition duration-300">
+                    LINE
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-gray-500 block font-mono">LINE CHATBOT</span>
+                    <span className="text-xs sm:text-sm text-gray-200 group-hover:text-emerald-400 transition">แอดไลน์ https://lin.ee/nDC9CYG</span>
                   </div>
                 </a>
 
