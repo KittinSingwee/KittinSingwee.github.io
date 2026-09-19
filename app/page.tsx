@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const lineLink = "https://lin.ee/nDC9CYG";
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="bg-[#0b0e14] text-[#f1f5f9] min-h-screen font-sans scroll-smooth antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
@@ -37,6 +45,7 @@ export default function Home() {
             <a href="#hero" className="hover:text-red-400 transition duration-200">หน้าแรก</a>
             <a href="#about" className="hover:text-blue-400 transition duration-200">เกี่ยวกับร้าน</a>
             <a href="#services" className="hover:text-red-400 transition duration-200">บริการ</a>
+            <a href="#lookbook" className="hover:text-[#d4af37] transition duration-200">สไตล์ทรงผม</a>
             <a href="#shop-view" className="hover:text-blue-400 transition duration-200">บรรยากาศร้าน</a>
             <a href="#line-chatbot" className="hover:text-emerald-400 transition duration-200">LINE Chatbot</a>
             <a href="#location" className="hover:text-red-400 transition duration-200">การติดต่อ</a>
@@ -96,6 +105,13 @@ export default function Home() {
                 className="py-2 px-3 rounded-lg hover:bg-red-950/40 hover:text-red-400 transition"
               >
                 ✂️ บริการและราคา
+              </a>
+              <a
+                href="#lookbook"
+                onClick={() => setIsMenuOpen(false)}
+                className="py-2 px-3 rounded-lg hover:bg-amber-950/40 hover:text-[#d4af37] transition"
+              >
+                📸 รีวิวทรงผม (IG Lookbook)
               </a>
               <a
                 href="#shop-view"
@@ -369,6 +385,145 @@ export default function Home() {
             );
           })}
         </div>
+      </section>
+
+      {/* 4.5 INSTAGRAM CAROUSEL SHOWCASE (ใต้ SERVICES) */}
+      <section id="lookbook" className="py-16 px-4 max-w-6xl mx-auto border-t border-gray-900">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 border border-red-500/40 px-3 py-1 rounded-full bg-red-950/40 text-red-400 font-mono text-[11px] uppercase tracking-wider mb-2">
+              <span>📸</span> INSTAGRAM LOOKBOOK
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
+              รีวิวทรงผมลูกค้า <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">(Hairstyle Showcase)</span>
+            </h3>
+            <p className="text-gray-400 text-xs sm:text-sm mt-1 font-light">
+              เลื่อนสไลด์แนวนอนเพื่อชมตัวอย่างทรงผมหล่อ ๆ สไตล์ต่าง ๆ ของลูกค้าทางร้าน
+            </p>
+          </div>
+
+          {/* Navigation Arrows for Desktop */}
+          <div className="hidden sm:flex items-center gap-2">
+            <button
+              onClick={() => scrollCarousel("left")}
+              className="w-10 h-10 rounded-full border border-gray-800 bg-[#131926] hover:border-red-500 hover:text-red-400 text-gray-300 flex items-center justify-center transition active:scale-95 shadow-md"
+              aria-label="Previous Slide"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => scrollCarousel("right")}
+              className="w-10 h-10 rounded-full border border-gray-800 bg-[#131926] hover:border-blue-500 hover:text-blue-400 text-gray-300 flex items-center justify-center transition active:scale-95 shadow-md"
+              aria-label="Next Slide"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        {/* Carousel Horizontal Scroll Container */}
+        <div
+          ref={carouselRef}
+          className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory py-2 pb-6 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth"
+        >
+          {[
+            {
+              title: "Vintage Pompadour Fade",
+              category: "ทรงผมวินเทจเซ็ตทรงหวีเรียบ",
+              img: "/image_926161.jpg",
+              likes: "128 likes",
+              tag: "Vintage Fade",
+            },
+            {
+              title: "Two-Block Modern Cut",
+              category: "ทรงทูบล็อกยอดนิยม ร่วมสมัย",
+              img: "/watermarked_img_3988630376005458443.jpg",
+              likes: "95 likes",
+              tag: "TwoBlock",
+            },
+            {
+              title: "รองทรงสูง คลาสสิก",
+              category: "รองทรงสูง สุภาพ เนี๊ยบทุกมุม",
+              img: "/view_3.jpg",
+              likes: "142 likes",
+              tag: "ClassicCut",
+            },
+            {
+              title: "Slick Back Barber Style",
+              category: "หวีปาดหลัง สไตล์บาร์เบอร์คลาสสิก",
+              img: "/view_2.jpg",
+              likes: "110 likes",
+              tag: "SlickBack",
+            },
+            {
+              title: "รองทรงสั้น วินเทจ",
+              category: "สั้นสะอาดตา ดูแลรักษาง่าย",
+              img: "/image_926161.jpg",
+              likes: "88 likes",
+              tag: "ShortFade",
+            },
+            {
+              title: "Beard & Haircut Grooming",
+              category: "ตัดผมพร้อมตัดแต่งหนวดเครา",
+              img: "/watermarked_img_3988630376005458443.jpg",
+              likes: "106 likes",
+              tag: "Grooming",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="flex-none w-[260px] sm:w-[290px] snap-start bg-[#131926] border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500/60 transition-all duration-300 shadow-xl group"
+            >
+              {/* Card IG Header */}
+              <div className="p-3 bg-[#0d121d] flex items-center justify-between border-b border-gray-800/80">
+                <div className="flex items-center gap-2">
+                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-red-500">
+                    <Image src="/logo.jpg" alt="Logo" fill className="object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-white font-mono">phanbarber_official</p>
+                    <p className="text-[9px] text-gray-400 font-mono">Kamphaeng Phet</p>
+                  </div>
+                </div>
+                <span className="text-[10px] text-[#d4af37] font-mono border border-[#d4af37]/40 px-2 py-0.5 rounded-full">
+                  LOOKBOOK
+                </span>
+              </div>
+
+              {/* Card Image */}
+              <div className="relative w-full aspect-square overflow-hidden bg-[#080b10]">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-[10px] font-mono">
+                  #{item.tag}
+                </div>
+              </div>
+
+              {/* Card Footer / Caption */}
+              <div className="p-4 space-y-1.5">
+                <div className="flex items-center justify-between text-xs text-gray-400 font-mono">
+                  <span className="text-red-400 font-medium">❤️ {item.likes}</span>
+                  <span className="text-[10px] text-gray-500">SWIPE ➔</span>
+                </div>
+                <h4 className="text-base font-bold font-serif text-white group-hover:text-red-400 transition">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-gray-400 font-light">
+                  {item.category}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Swipe Tip */}
+        <p className="text-center text-[11px] text-gray-500 font-mono mt-2 sm:hidden">
+          👉 ใช้นิ้วปัดสไลด์เพื่อดูทรงผมอื่น ๆ ทางขวา 👈
+        </p>
       </section>
 
       {/* 5. SHOP VIEW SECTION */}
