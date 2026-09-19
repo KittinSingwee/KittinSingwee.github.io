@@ -242,7 +242,7 @@ export default function Home() {
                 onClick={() => setIsMenuOpen(false)}
                 className="py-2 px-3 rounded-lg hover:bg-emerald-950/40 text-emerald-400 transition flex items-center justify-between"
               >
-                <span>💬 LINE Chatbot & จองคิว</span>
+                <span>💬 LINE Chatbot</span>
                 <span className="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 rounded font-mono">
                   ADD LINE
                 </span>
@@ -720,7 +720,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 rounded-full font-semibold text-xs sm:text-sm text-center shadow-[0_0_20px_rgba(16,185,129,0.3)] transition duration-300 flex items-center justify-center gap-2"
                 >
-                  <span>💬</span> จองคิวทรงนี้ผ่าน LINE
+                  <span>💬</span> สอบถามทรงนี้ผ่าน LINE
                 </a>
                 <button
                   onClick={() => setSelectedLookbook(null)}
@@ -856,11 +856,11 @@ export default function Home() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
-                แชทสอบถาม & จองคิวผ่าน <span className="text-emerald-400">LINE Chatbot</span>
+                แชทสอบถามข้อมูลผ่าน <span className="text-emerald-400">LINE Chatbot</span>
               </h2>
 
               <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed font-light">
-                สะดวก รวดเร็ว! คุณสามารถแสกน QR Code นี้ หรือคลิกปุ่มแอดไลน์ด้านล่างเพื่อแชทสอบถามรายละเอียด เช็คคิวตัดผม กับ LINE Chatbot ของร้านพันธ์บาร์เบอร์ได้ทันที
+                สะดวก รวดเร็ว! คุณสามารถแสกน QR Code นี้ หรือคลิกปุ่มแอดไลน์ด้านล่างเพื่อแชทสอบถามรายละเอียดกับ LINE Chatbot ของร้านพันธ์บาร์เบอร์ได้ทันที
               </p>
 
               <div className="space-y-2.5 pt-1 text-left inline-block md:block">
@@ -870,7 +870,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-                  เช็คเวลาทำการและสอบถามคิวตัดผม
+                  เช็คเวลาทำการและข้อมูลบริการ
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
