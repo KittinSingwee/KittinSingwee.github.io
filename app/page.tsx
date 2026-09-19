@@ -5,14 +5,129 @@ import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedLookbook, setSelectedLookbook] = useState<null | {
+    id: number;
+    title: string;
+    category: string;
+    description: string;
+    tag: string;
+    likes: string;
+    img: string;
+    angles: {
+      front: string;
+      left: string;
+      right: string;
+      back: string;
+    };
+  }>(null);
+  const [activeAngle, setActiveAngle] = useState<"front" | "left" | "right" | "back">("front");
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const lineLink = "https://lin.ee/nDC9CYG";
+
+  const lookbookData = [
+    {
+      id: 1,
+      title: "Vintage Pompadour Fade",
+      category: "ทรงผมวินเทจเซ็ตทรงหวีเรียบ",
+      description: "ทรงผมสไตล์วินเทจยอดนิยม ปาดเป๊ะ ขอบคมกริบ ไล่เฟดเนียนตา เหมาะสำหรับหนุ่ม ๆ ที่ต้องการลุคเท่ สมาร์ต ละเอียดพิถีพิถัน",
+      tag: "VintageFade",
+      likes: "128 likes",
+      img: "/image_926161.jpg",
+      angles: {
+        front: "/image_926161.jpg",
+        left: "/watermarked_img_3988630376005458443.jpg",
+        right: "/view_3.jpg",
+        back: "/view_2.jpg",
+      },
+    },
+    {
+      id: 2,
+      title: "Two-Block Modern Cut",
+      category: "ทรงทูบล็อกยอดนิยม ร่วมสมัย",
+      description: "ทรงผมทูบล็อกสไตล์เกาหลี-ร่วมสมัย ด้านข้างไถเฟดความยาวกำลังดี ด้านบนปล่อยวอลลุ่มธรรมชาติตัดแต่งเข้าทรงง่าย",
+      tag: "TwoBlock",
+      likes: "95 likes",
+      img: "/watermarked_img_3988630376005458443.jpg",
+      angles: {
+        front: "/watermarked_img_3988630376005458443.jpg",
+        left: "/image_926161.jpg",
+        right: "/view_2.jpg",
+        back: "/view_3.jpg",
+      },
+    },
+    {
+      id: 3,
+      title: "รองทรงสูง คลาสสิก",
+      category: "รองทรงสูง สุภาพ เนี๊ยบทุกมุม",
+      description: "ทรงผมสุภาพคลาสสิกชายไทย ไถไล่ระดับเนียนกริบ เหมาะกับนักเรียน นักศึกษา และคนทำงานที่ต้องการลุคดูเรียบร้อยสะอาดตา",
+      tag: "ClassicCut",
+      likes: "142 likes",
+      img: "/view_3.jpg",
+      angles: {
+        front: "/view_3.jpg",
+        left: "/view_2.jpg",
+        right: "/image_926161.jpg",
+        back: "/watermarked_img_3988630376005458443.jpg",
+      },
+    },
+    {
+      id: 4,
+      title: "Slick Back Barber Style",
+      category: "หวีปาดหลัง สไตล์บาร์เบอร์คลาสสิก",
+      description: "ทรงหวีเรียบปาดหลัง เน้นความเท่แบบลอร์ดบาร์เบอร์ ใช้โพเมดเซ็ตเงางาม ลุคสตรีทวินเทจผู้ใหญ่ชื่นชอบ",
+      tag: "SlickBack",
+      likes: "110 likes",
+      img: "/view_2.jpg",
+      angles: {
+        front: "/view_2.jpg",
+        left: "/view_3.jpg",
+        right: "/watermarked_img_3988630376005458443.jpg",
+        back: "/image_926161.jpg",
+      },
+    },
+    {
+      id: 5,
+      title: "รองทรงสั้น วินเทจ",
+      category: "สั้นสะอาดตา ดูแลรักษาง่าย",
+      description: "ทรงรองทรงสั้นตอบโจทย์หนุ่ม ๆ สบายหัว ไม่ร้อน ไม่ต้องเซ็ตนาน ตื่นมาหวีเบา ๆ ก็พร้อมลุย",
+      tag: "ShortFade",
+      likes: "88 likes",
+      img: "/image_926161.jpg",
+      angles: {
+        front: "/image_926161.jpg",
+        left: "/view_2.jpg",
+        right: "/view_3.jpg",
+        back: "/watermarked_img_3988630376005458443.jpg",
+      },
+    },
+    {
+      id: 6,
+      title: "Beard & Haircut Grooming",
+      category: "ตัดผมพร้อมตัดแต่งหนวดเครา",
+      description: "แพ็กเกจดูแลทรงผมและตัดแต่งทรงหนวดเครากริบ ได้กรอบหน้าชัด สไตล์คลาสสิกบาร์เบอร์ตัวจริง",
+      tag: "Grooming",
+      likes: "106 likes",
+      img: "/watermarked_img_3988630376005458443.jpg",
+      angles: {
+        front: "/watermarked_img_3988630376005458443.jpg",
+        left: "/view_3.jpg",
+        right: "/image_926161.jpg",
+        back: "/view_2.jpg",
+      },
+    },
+  ];
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
       const scrollAmount = direction === "left" ? -300 : 300;
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
+  };
+
+  const openLookbookModal = (item: typeof lookbookData[0]) => {
+    setSelectedLookbook(item);
+    setActiveAngle("front");
   };
 
   return (
@@ -111,7 +226,7 @@ export default function Home() {
                 onClick={() => setIsMenuOpen(false)}
                 className="py-2 px-3 rounded-lg hover:bg-amber-950/40 hover:text-[#d4af37] transition"
               >
-                📸 รีวิวทรงผม (IG Lookbook)
+                📸 รีวิวทรงผม (ดู 4 มุม)
               </a>
               <a
                 href="#shop-view"
@@ -387,18 +502,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4.5 INSTAGRAM CAROUSEL SHOWCASE (ใต้ SERVICES) */}
+      {/* 4.5 INSTAGRAM CAROUSEL SHOWCASE (พร้อมการดูมุมมอง 4 ด้าน) */}
       <section id="lookbook" className="py-16 px-4 max-w-6xl mx-auto border-t border-gray-900">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <div className="inline-flex items-center gap-2 border border-red-500/40 px-3 py-1 rounded-full bg-red-950/40 text-red-400 font-mono text-[11px] uppercase tracking-wider mb-2">
-              <span>📸</span> INSTAGRAM LOOKBOOK
+              <span>📸</span> INSTAGRAM LOOKBOOK • CLICK FOR 4-ANGLES
             </div>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
-              รีวิวทรงผมลูกค้า <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">(Hairstyle Showcase)</span>
+              รีวิวทรงผมลูกค้า <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">(คลิกดูมุมมอง 4 ด้าน)</span>
             </h3>
             <p className="text-gray-400 text-xs sm:text-sm mt-1 font-light">
-              เลื่อนสไลด์แนวนอนเพื่อชมตัวอย่างทรงผมหล่อ ๆ สไตล์ต่าง ๆ ของลูกค้าทางร้าน
+              เลื่อนสไลด์ดูทรงผม และ <span className="text-red-400 font-medium underline">คลิกที่รูป</span> เพื่อส่องดูรายละเอียดทรงผมได้ครบทั้ง 4 มุม (หน้า-ซ้าย-ขวา-หลัง)
             </p>
           </div>
 
@@ -426,53 +541,11 @@ export default function Home() {
           ref={carouselRef}
           className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory py-2 pb-6 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth"
         >
-          {[
-            {
-              title: "Vintage Pompadour Fade",
-              category: "ทรงผมวินเทจเซ็ตทรงหวีเรียบ",
-              img: "/image_926161.jpg",
-              likes: "128 likes",
-              tag: "Vintage Fade",
-            },
-            {
-              title: "Two-Block Modern Cut",
-              category: "ทรงทูบล็อกยอดนิยม ร่วมสมัย",
-              img: "/watermarked_img_3988630376005458443.jpg",
-              likes: "95 likes",
-              tag: "TwoBlock",
-            },
-            {
-              title: "รองทรงสูง คลาสสิก",
-              category: "รองทรงสูง สุภาพ เนี๊ยบทุกมุม",
-              img: "/view_3.jpg",
-              likes: "142 likes",
-              tag: "ClassicCut",
-            },
-            {
-              title: "Slick Back Barber Style",
-              category: "หวีปาดหลัง สไตล์บาร์เบอร์คลาสสิก",
-              img: "/view_2.jpg",
-              likes: "110 likes",
-              tag: "SlickBack",
-            },
-            {
-              title: "รองทรงสั้น วินเทจ",
-              category: "สั้นสะอาดตา ดูแลรักษาง่าย",
-              img: "/image_926161.jpg",
-              likes: "88 likes",
-              tag: "ShortFade",
-            },
-            {
-              title: "Beard & Haircut Grooming",
-              category: "ตัดผมพร้อมตัดแต่งหนวดเครา",
-              img: "/watermarked_img_3988630376005458443.jpg",
-              likes: "106 likes",
-              tag: "Grooming",
-            },
-          ].map((item, idx) => (
+          {lookbookData.map((item) => (
             <div
-              key={idx}
-              className="flex-none w-[260px] sm:w-[290px] snap-start bg-[#131926] border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500/60 transition-all duration-300 shadow-xl group"
+              key={item.id}
+              onClick={() => openLookbookModal(item)}
+              className="flex-none w-[260px] sm:w-[290px] snap-start bg-[#131926] border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500/80 transition-all duration-300 shadow-xl group cursor-pointer hover:-translate-y-1"
             >
               {/* Card IG Header */}
               <div className="p-3 bg-[#0d121d] flex items-center justify-between border-b border-gray-800/80">
@@ -485,8 +558,8 @@ export default function Home() {
                     <p className="text-[9px] text-gray-400 font-mono">Kamphaeng Phet</p>
                   </div>
                 </div>
-                <span className="text-[10px] text-[#d4af37] font-mono border border-[#d4af37]/40 px-2 py-0.5 rounded-full">
-                  LOOKBOOK
+                <span className="text-[10px] text-[#d4af37] font-mono border border-[#d4af37]/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span>📐</span> 4 มุม
                 </span>
               </div>
 
@@ -501,18 +574,23 @@ export default function Home() {
                 <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-[10px] font-mono">
                   #{item.tag}
                 </div>
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                  <span className="bg-red-600 text-white text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-lg">
+                    🔍 คลิกดู 4 มุมมอง
+                  </span>
+                </div>
               </div>
 
               {/* Card Footer / Caption */}
               <div className="p-4 space-y-1.5">
                 <div className="flex items-center justify-between text-xs text-gray-400 font-mono">
                   <span className="text-red-400 font-medium">❤️ {item.likes}</span>
-                  <span className="text-[10px] text-gray-500">SWIPE ➔</span>
+                  <span className="text-[10px] text-blue-400 font-bold group-hover:underline">ดู 4 ด้าน ➔</span>
                 </div>
                 <h4 className="text-base font-bold font-serif text-white group-hover:text-red-400 transition">
                   {item.title}
                 </h4>
-                <p className="text-xs text-gray-400 font-light">
+                <p className="text-xs text-gray-400 font-light truncate">
                   {item.category}
                 </p>
               </div>
@@ -522,9 +600,139 @@ export default function Home() {
 
         {/* Mobile Swipe Tip */}
         <p className="text-center text-[11px] text-gray-500 font-mono mt-2 sm:hidden">
-          👉 ใช้นิ้วปัดสไลด์เพื่อดูทรงผมอื่น ๆ ทางขวา 👈
+          👉 แตะที่รูปทรงผมเพื่อส่องดูรายละเอียดครบ 4 ด้าน (หน้า-ซ้าย-ขวา-หลัง) 👈
         </p>
       </section>
+
+      {/* 4-ANGLE INTERACTIVE HAIRSTYLE MODAL */}
+      {selectedLookbook && (
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+          <div className="relative max-w-4xl w-full bg-[#0d121d] border border-red-500/50 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedLookbook(null)}
+              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center font-bold text-lg transition duration-200 border border-gray-700 shadow-lg"
+              aria-label="Close Modal"
+            >
+              ✕
+            </button>
+
+            {/* Left Column: Image Viewer & Angle Selector */}
+            <div className="md:w-1/2 p-6 flex flex-col items-center justify-center bg-[#080b10] border-b md:border-b-0 md:border-r border-gray-800">
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-red-500/40 shadow-xl mb-4 group">
+                <Image
+                  src={selectedLookbook.angles[activeAngle]}
+                  alt={`${selectedLookbook.title} - มุม ${activeAngle}`}
+                  fill
+                  className="object-cover transition duration-300"
+                />
+                <div className="absolute top-3 left-3 bg-red-600/90 text-white px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider shadow">
+                  มุม{activeAngle === "front" ? "หน้า" : activeAngle === "left" ? "ซ้าย" : activeAngle === "right" ? "ขวา" : "หลัง"}
+                </div>
+              </div>
+
+              {/* Angle Switcher Buttons (4 มุม) */}
+              <div className="grid grid-cols-4 gap-2 w-full">
+                {[
+                  { key: "front", label: "หน้า" },
+                  { key: "left", label: "ซ้าย" },
+                  { key: "right", label: "ขวา" },
+                  { key: "back", label: "หลัง" },
+                ].map((angle) => {
+                  const isActive = activeAngle === angle.key;
+                  return (
+                    <button
+                      key={angle.key}
+                      onClick={() => setActiveAngle(angle.key as any)}
+                      className={`py-2 px-1 rounded-xl text-xs font-mono font-bold transition duration-200 flex flex-col items-center justify-center gap-1 border ${
+                        isActive
+                          ? "bg-gradient-to-r from-red-600 to-blue-600 text-white border-white shadow-md scale-105"
+                          : "bg-[#131926] text-gray-400 border-gray-800 hover:text-white hover:border-gray-600"
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase">มุม{angle.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right Column: Haircut Details & LINE Booking */}
+            <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono text-red-400 bg-red-950/60 border border-red-500/40 px-3 py-1 rounded-full uppercase">
+                    #{selectedLookbook.tag}
+                  </span>
+                  <span className="text-xs font-mono text-gray-400">❤️ {selectedLookbook.likes}</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-white">
+                  {selectedLookbook.title}
+                </h3>
+
+                <p className="text-sm font-medium text-[#d4af37]">
+                  {selectedLookbook.category}
+                </p>
+
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light bg-[#131926] p-4 rounded-2xl border border-gray-800">
+                  {selectedLookbook.description}
+                </p>
+
+                <div className="space-y-2 pt-2">
+                  <p className="text-xs font-mono text-gray-400 uppercase tracking-wider">
+                    🔍 พรีวิวตัวอย่างมุมมอง 4 ด้าน:
+                  </p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[
+                      { key: "front", label: "หน้า" },
+                      { key: "left", label: "ซ้าย" },
+                      { key: "right", label: "ขวา" },
+                      { key: "back", label: "หลัง" },
+                    ].map((item) => (
+                      <div
+                        key={item.key}
+                        onClick={() => setActiveAngle(item.key as any)}
+                        className={`relative aspect-square rounded-xl overflow-hidden border cursor-pointer ${
+                          activeAngle === item.key ? "border-red-500 ring-2 ring-red-500/60 scale-105" : "border-gray-800 opacity-60 hover:opacity-100"
+                        }`}
+                      >
+                        <Image
+                          src={selectedLookbook.angles[item.key as keyof typeof selectedLookbook.angles]}
+                          alt={item.label}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/40 flex items-end justify-center pb-1">
+                          <span className="text-[9px] font-mono text-white font-bold">มุม{item.label}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 border-t border-gray-800 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={lineLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 rounded-full font-semibold text-xs sm:text-sm text-center shadow-[0_0_20px_rgba(16,185,129,0.3)] transition duration-300 flex items-center justify-center gap-2"
+                >
+                  <span>💬</span> จองคิวทรงนี้ผ่าน LINE
+                </a>
+                <button
+                  onClick={() => setSelectedLookbook(null)}
+                  className="px-6 py-3.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-full font-mono text-xs transition"
+                >
+                  ปิดหน้าต่าง
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 5. SHOP VIEW SECTION */}
       <section id="shop-view" className="py-20 md:py-24 bg-[#080b10] px-4 border-y border-gray-900">
