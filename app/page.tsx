@@ -484,7 +484,7 @@ export default function Home() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
-                แชทสอบถาม & จองคิวผ่าน <span className="text-emerald-400">LINE Chatbot</span>
+                แชทสอบถาม  <span className="text-emerald-400">LINE Chatbot</span>
               </h2>
 
               <p className="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed font-light">
@@ -498,7 +498,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-                  เช็คเวลาทำการและสอบถามคิวตัดผม
+                  เช็คเวลาทำการ
                 </div>
                 <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
                   <span className="w-5 h-5 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
