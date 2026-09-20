@@ -28,10 +28,10 @@ export default function Home() {
   const lookbookData = [
     {
       id: 1,
-      title: "Vintage Pompadour Fade",
-      category: "ทรงผมวินเทจเซ็ตทรงหวีเรียบ",
-      description: "ทรงผมสไตล์วินเทจยอดนิยม ปาดเป๊ะ ขอบคมกริบ ไล่เฟดเนียนตา เหมาะสำหรับหนุ่ม ๆ ที่ต้องการลุคเท่ สมาร์ต ละเอียดพิถีพิถัน",
-      tag: "VintageFade",
+      title: "ทรงผมผู้ชาย Mullet",
+      category: "Mullet ผมสุดเก๋ ย้อนยุค จะกลับมาฮิตอีกครั้ง!",
+      description: "ทรงผม มัลเล็ต (Mullet) ผมสุดเก๋สไตล์ย้อนยุค ปล่อยยาวช่วงท้ายทอย เพิ่มความชิคและมีเอกลักษณ์ กลับมาฮิตอย่างต่อเนื่อง",
+      tag: "Mullet",
       likes: "128 likes",
       img: "/image_926161.jpg",
       angles: {
@@ -43,11 +43,11 @@ export default function Home() {
     },
     {
       id: 2,
-      title: "Two-Block Modern Cut",
-      category: "ทรงทูบล็อกยอดนิยม ร่วมสมัย",
-      description: "ทรงผมทูบล็อกสไตล์เกาหลี-ร่วมสมัย ด้านข้างไถเฟดความยาวกำลังดี ด้านบนปล่อยวอลลุ่มธรรมชาติตัดแต่งเข้าทรงง่าย",
+      title: "ทรงผมผู้ชาย Two Block",
+      category: "สไตล์หนุ่มสุภาพ แฝงความเท่ และมีเสน่ห์",
+      description: "ทรงผมทูบล็อกยอดนิยม สไตล์หนุ่มสุภาพ แฝงความเท่และมีเสน่ห์ ด้านข้างไถเว้นความยาวกำลังดี ด้านบนปล่อยวอลลุ่มธรรมชาติ",
       tag: "TwoBlock",
-      likes: "95 likes",
+      likes: "145 likes",
       img: "/watermarked_img_3988630376005458443.jpg",
       angles: {
         front: "/watermarked_img_3988630376005458443.jpg",
@@ -58,11 +58,11 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "รองทรงสูง คลาสสิก",
-      category: "รองทรงสูง สุภาพ เนี๊ยบทุกมุม",
-      description: "ทรงผมสุภาพคลาสสิกชายไทย ไถไล่ระดับเนียนกริบ เหมาะกับนักเรียน นักศึกษา และคนทำงานที่ต้องการลุคดูเรียบร้อยสะอาดตา",
-      tag: "ClassicCut",
-      likes: "142 likes",
+      title: "ทรงผมผู้ชาย Ivy League",
+      category: "ทรงผมสุดคลาสสิก เรียบร้อย ดูดีทุกวัย",
+      description: "ทรงผม Ivy League สุดคลาสสิก ด้านข้างเฟดสั้น ด้านบนสไลด์สั้นปาดข้างเบาๆ ลุคสุภาพ เรียบร้อย ดูดีเหมาะกับทุกวัย",
+      tag: "IvyLeague",
+      likes: "162 likes",
       img: "/view_3.jpg",
       angles: {
         front: "/view_3.jpg",
@@ -73,11 +73,11 @@ export default function Home() {
     },
     {
       id: 4,
-      title: "Slick Back Barber Style",
-      category: "หวีปาดหลัง สไตล์บาร์เบอร์คลาสสิก",
-      description: "ทรงหวีเรียบปาดหลัง เน้นความเท่แบบลอร์ดบาร์เบอร์ ใช้โพเมดเซ็ตเงางาม ลุคสตรีทวินเทจผู้ใหญ่ชื่นชอบ",
-      tag: "SlickBack",
-      likes: "110 likes",
+      title: "ทรงผมผู้ชาย Slicked Back",
+      category: "เซ็ตสไตล์วินเทจ",
+      description: "ทรงผม Slicked Back หวีปาดหลังเซ็ตสไตล์วินเทจ เนี้ยบ คมกริบ เพิ่มความมั่นใจและลุคหล่อสมาร์ตสไตล์บาร์เบอร์คลาสสิก",
+      tag: "SlickedBack",
+      likes: "130 likes",
       img: "/view_2.jpg",
       angles: {
         front: "/view_2.jpg",
@@ -88,11 +88,11 @@ export default function Home() {
     },
     {
       id: 5,
-      title: "รองทรงสั้น วินเทจ",
-      category: "สั้นสะอาดตา ดูแลรักษาง่าย",
-      description: "ทรงรองทรงสั้นตอบโจทย์หนุ่ม ๆ สบายหัว ไม่ร้อน ไม่ต้องเซ็ตนาน ตื่นมาหวีเบา ๆ ก็พร้อมลุย",
-      tag: "ShortFade",
-      likes: "88 likes",
+      title: "ทรงผมผู้ชาย Undercut",
+      category: "หล่อเนี้ยบ",
+      description: "ทรงผม Undercut ไถเปิดข้างเนียนกริบ ปรับลุคให้ดูหล่อเนี้ยบ ดูแลและเซ็ตทรงง่าย เข้ากับทุกโครงหน้า",
+      tag: "Undercut",
+      likes: "118 likes",
       img: "/image_926161.jpg",
       angles: {
         front: "/image_926161.jpg",
@@ -103,11 +103,11 @@ export default function Home() {
     },
     {
       id: 6,
-      title: "Beard & Haircut Grooming",
-      category: "ตัดผมพร้อมตัดแต่งหนวดเครา",
-      description: "แพ็กเกจดูแลทรงผมและตัดแต่งทรงหนวดเครากริบ ได้กรอบหน้าชัด สไตล์คลาสสิกบาร์เบอร์ตัวจริง",
-      tag: "Grooming",
-      likes: "106 likes",
+      title: "ทรงผมผู้ชาย Skinhead Fade",
+      category: "กวนๆ เท่ๆ",
+      description: "ทรงผม Skinhead Fade ตัดสั้นเกลาเนียนกริบ สไตล์กวนๆ เท่ๆ เบาสบายหัว ไม่ต้องเสียเวลาเซ็ตผม",
+      tag: "SkinheadFade",
+      likes: "156 likes",
       img: "/watermarked_img_3988630376005458443.jpg",
       angles: {
         front: "/watermarked_img_3988630376005458443.jpg",
