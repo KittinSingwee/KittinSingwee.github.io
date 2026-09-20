@@ -416,7 +416,7 @@ export default function Home() {
             {/* About Image Frame */}
             <div className="relative w-full h-[300px] sm:h-[380px] rounded-[2rem] overflow-hidden border-2 border-[#7c3aed]/40 shadow-2xl group">
               <Image
-                src="/view_2.jpg"
+                src="/front_shop.jpg"
                 alt="บรรยากาศการบริการ พันธ์บาร์เบอร์"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
