@@ -548,9 +548,6 @@ export default function Home() {
                     {item.title}
                   </h4>
                 </div>
-                <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
-                  {item.file}
-                </span>
               </div>
 
               <div className="relative w-full aspect-[3/4] sm:aspect-[16/11] rounded-3xl overflow-hidden bg-neutral-900 border border-[#7c3aed]/30 shadow-2xl">
