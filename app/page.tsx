@@ -686,7 +686,7 @@ export default function Home() {
             {/* View 4 */}
             <div className="w-full h-[280px] sm:h-[350px] rounded-3xl overflow-hidden relative border border-[#7c3aed]/30 shadow-2xl group">
               <Image
-                src="/image_926161.jpg"
+                src="/front_shop.jpg"
                 alt="วิวหน้าร้านพันธ์บาร์เบอร์"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
@@ -698,6 +698,46 @@ export default function Home() {
                   </span>
                   <p className="text-white font-medium text-sm sm:text-base">
                     หน้าร้านและมุมต้อนรับลูกค้า
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* View 5 */}
+            <div className="w-full h-[280px] sm:h-[350px] rounded-3xl overflow-hidden relative border border-[#7c3aed]/30 shadow-2xl group">
+              <Image
+                src="/in_shop.jpg"
+                alt="ภายในร้าน"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-5">
+                <div>
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-0.5">
+                    IN STORE VIEW
+                  </span>
+                  <p className="text-white font-medium text-sm sm:text-base">
+                    ในร้านและมุมต้อนรับลูกค้า
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* View 6 */}
+            <div className="w-full h-[280px] sm:h-[350px] rounded-3xl overflow-hidden relative border border-[#7c3aed]/30 shadow-2xl group">
+              <Image
+                src="/in_shop2.jpg"
+                alt="ภายในร้าน"
+                fill
+                className="object-cover group-hover:scale-105 transition duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-5">
+                <div>
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-0.5">
+                    IN STORE VIEW
+                  </span>
+                  <p className="text-white font-medium text-sm sm:text-base">
+                    มีเด็กไม่อยากตัดผม555
                   </p>
                 </div>
               </div>
