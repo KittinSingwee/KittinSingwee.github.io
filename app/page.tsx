@@ -830,7 +830,7 @@ export default function Home() {
                   </div>
                   <div>
                     <span className="text-[10px] text-gray-500 block font-mono">FACEBOOK PAGE</span>
-                    <span className="text-xs sm:text-sm text-gray-200 group-hover:text-blue-400 transition">พันธ์ สิงห์วิจารย์</span>
+                    <span className="text-xs sm:text-sm text-gray-200 group-hover:text-blue-400 transition">พันธ์ บาร์เบอร์</span>
                   </div>
                 </a>
               </div>
@@ -857,7 +857,7 @@ export default function Home() {
               href="https://maps.app.goo.gl/hLDXYvqb8BShwz9P7"
               target="_blank"
               rel="noreferrer"
-              className="w-full py-4 bg-gradient-to-r from-red-600 via-emerald-600 to-blue-600 hover:opacity-95 text-white rounded-xl text-xs sm:text-sm font-mono font-bold tracking-wider transition duration-300 shadow-xl flex items-center justify-center gap-2 group"
+              className="w-full py-4 bg-gradient-to-r from-red-600 via-emerald-600  hover:opacity-95 text-white rounded-xl text-xs sm:text-sm font-mono font-bold tracking-wider transition duration-300 shadow-xl flex items-center justify-center gap-2 group"
             >
               <span>📍</span> เปิดนำทางด้วย Google Maps (คลิกเพื่อดูหมุดร้าน) ➔
             </a>
