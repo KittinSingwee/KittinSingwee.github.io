@@ -312,7 +312,7 @@ export default function Home() {
 
                   <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-neutral-100">
                     <Image
-                      src="/image_926161.jpg"
+                      src="/logo.jpg"
                       alt="Featured Hairstyle Lookbook"
                       fill
                       className="object-cover"
@@ -325,14 +325,14 @@ export default function Home() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <h4 className="text-lg font-bold font-serif text-neutral-900">
-                        Mullet & Two-Block
+                        พันธ์บาร์เบอร์
                       </h4>
                       <span className="text-xs font-mono font-bold text-[#7c3aed]">
-                        100-150 ฿
+                        มาจ้าา
                       </span>
                     </div>
                     <p className="text-xs text-gray-600 font-light">
-                      ทรงยอดฮิต หล่อเนี้ยบสไตล์ร่วมสมัย เซ็ตทรงง่าย
+                      มาตัดผม ทรงยอดฮิต หล่อเนี้ยบสไตล์ร่วมสมัย เซ็ตทรงง่าย
                     </p>
 
                     <a
