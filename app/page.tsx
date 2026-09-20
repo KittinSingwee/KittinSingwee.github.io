@@ -768,11 +768,26 @@ export default function Home() {
                 <h4 className="text-lg sm:text-xl font-bold font-serif text-white mb-2">
                   พันธ์ บาร์เบอร์ (PHAN BARBER)
                 </h4>
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light">
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
                   6PPJ+597 ตำบลท่ามะเขือ
                   <br />
                   อำเภอคลองขลุง จังหวัดกำแพงเพชร
                 </p>
+
+                {/* Shop Photo Card */}
+                <div className="relative w-full h-40 rounded-xl overflow-hidden border border-gray-800 shadow-md group">
+                  <Image
+                    src="/view_2.jpg"
+                    alt="ร้านตัดผมชาย พันธ์ บาร์เบอร์"
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-3">
+                    <span className="text-xs font-mono text-white font-medium flex items-center gap-1.5">
+                      <span>📍</span> ร้านตัดผมชาย พันธ์ บาร์เบอร์ (ท่ามะเขือ)
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="pt-5 border-t border-gray-800 space-y-3.5">
@@ -822,24 +837,30 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="h-[360px] sm:h-[440px] bg-[#0d121d] rounded-2xl border border-gray-800 overflow-hidden relative group shadow-2xl">
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-red-500/50 bg-[#0b0e14] flex items-center justify-center font-mono text-xs text-red-400">
-                MAP
-              </div>
-              <p className="text-gray-300 text-xs sm:text-sm max-w-xs font-light">
-                พื้นที่สำหรับใส่ Google Maps Embed Code สำหรับบอกตำแหน่งร้าน
-              </p>
-              <a
-                href="https://maps.google.com/?q=6PPJ%2B597+Khlong+Khlung+District+Kamphaeng+Phet"
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-2.5 bg-gradient-to-r from-red-700 to-blue-700 border border-white/20 text-white rounded-lg text-xs font-mono tracking-wider hover:brightness-110 transition duration-300 shadow-md"
-              >
-                OPEN IN GOOGLE MAPS
-              </a>
+          {/* Interactive Google Maps Embed & Open in Google Maps Link */}
+          <div className="space-y-4">
+            <div className="h-[360px] sm:h-[420px] bg-[#0d121d] rounded-2xl border border-gray-800 overflow-hidden relative shadow-2xl">
+              <iframe
+                title="Phan Barber Google Maps Location"
+                src="https://maps.google.com/maps?q=16.2353408,99.7308583&hl=th&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "contrast(1.05) opacity(0.95)" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full rounded-2xl"
+              ></iframe>
             </div>
+
+            <a
+              href="https://maps.app.goo.gl/hLDXYvqb8BShwz9P7"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full py-4 bg-gradient-to-r from-red-600 via-emerald-600 to-blue-600 hover:opacity-95 text-white rounded-xl text-xs sm:text-sm font-mono font-bold tracking-wider transition duration-300 shadow-xl flex items-center justify-center gap-2 group"
+            >
+              <span>📍</span> เปิดนำทางด้วย Google Maps (คลิกเพื่อดูหมุดร้าน) ➔
+            </a>
           </div>
         </div>
       </section>
