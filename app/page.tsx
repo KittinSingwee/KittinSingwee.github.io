@@ -5,130 +5,70 @@ import Image from "next/image";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedLookbook, setSelectedLookbook] = useState<null | {
-    id: number;
-    title: string;
-    category: string;
-    description: string;
-    tag: string;
-    likes: string;
-    img: string;
-    angles: {
-      front: string;
-      left: string;
-      right: string;
-      back: string;
-    };
-  }>(null);
-  const [activeAngle, setActiveAngle] = useState<"front" | "left" | "right" | "back">("front");
-
-  const carouselRef = useRef<HTMLDivElement>(null);
   const lineLink = "https://lin.ee/nDC9CYG";
 
-  const lookbookData = [
+  const editorialLookbookData = [
     {
-      id: 1,
-      title: "ทรงผมผู้ชาย Mullet",
-      category: "Mullet ผมสุดเก๋ ย้อนยุค จะกลับมาฮิตอีกครั้ง!",
-      description: "ทรงผม มัลเล็ต (Mullet) ผมสุดเก๋สไตล์ย้อนยุค ปล่อยยาวช่วงท้ายทอย เพิ่มความชิคและมีเอกลักษณ์ กลับมาฮิตอย่างต่อเนื่อง",
-      tag: "Mullet",
-      likes: "128 likes",
-      img: "/Mullet Mullet-front.png",
-      angles: {
-        front: "/Mullet Mullet-front.png",
-        left: "/Mullet Mullet-left.png",
-        right: "/Mullet Mullet-right.png",
-        back: "/Mullet Mullet-Back.png",
-      },
+      id: "twoblock",
+      num: "01",
+      title: "TWO BLOCK",
+      file: "Twoblock.jpg",
+      img: "/Twoblock.jpg",
+      length: "Medium–Long",
+      fade: "Low to None",
+      hairType: "Straight / Wavy",
     },
     {
-      id: 2,
-      title: "ทรงผมผู้ชาย Two Block",
-      category: "สไตล์หนุ่มสุภาพ แฝงความเท่ และมีเสน่ห์",
-      description: "ทรงผมทูบล็อกยอดนิยม สไตล์หนุ่มสุภาพ แฝงความเท่และมีเสน่ห์ ด้านข้างไถเว้นความยาวกำลังดี ด้านบนปล่อยวอลลุ่มธรรมชาติ",
-      tag: "TwoBlock",
-      likes: "145 likes",
-      img: "/watermarked_img_3988630376005458443.jpg",
-      angles: {
-        front: "/watermarked_img_3988630376005458443.jpg",
-        left: "/image_926161.jpg",
-        right: "/view_2.jpg",
-        back: "/view_3.jpg",
-      },
+      id: "mullet",
+      num: "02",
+      title: "MULLET",
+      file: "Mullet.jpg",
+      img: "/Mullet.jpg",
+      length: "Short–Long",
+      fade: "Low",
+      hairType: "All types",
     },
     {
-      id: 3,
-      title: "ทรงผมผู้ชาย Ivy League",
-      category: "ทรงผมสุดคลาสสิก เรียบร้อย ดูดีทุกวัย",
-      description: "ทรงผม Ivy League สุดคลาสสิก ด้านข้างเฟดสั้น ด้านบนสไลด์สั้นปาดข้างเบาๆ ลุคสุภาพ เรียบร้อย ดูดีเหมาะกับทุกวัย",
-      tag: "IvyLeague",
-      likes: "162 likes",
-      img: "/view_3.jpg",
-      angles: {
-        front: "/view_3.jpg",
-        left: "/view_2.jpg",
-        right: "/image_926161.jpg",
-        back: "/watermarked_img_3988630376005458443.jpg",
-      },
+      id: "slicked",
+      num: "03",
+      title: "SLICKED BACK",
+      file: "Slicked.jpg",
+      img: "/Slicked Back.jpg",
+      length: "Medium–Long",
+      fade: "None",
+      hairType: "Straight / Thick",
     },
     {
-      id: 4,
-      title: "ทรงผมผู้ชาย Slicked Back",
-      category: "เซ็ตสไตล์วินเทจ",
-      description: "ทรงผม Slicked Back หวีปาดหลังเซ็ตสไตล์วินเทจ เนี้ยบ คมกริบ เพิ่มความมั่นใจและลุคหล่อสมาร์ตสไตล์บาร์เบอร์คลาสสิก",
-      tag: "SlickedBack",
-      likes: "130 likes",
-      img: "/view_2.jpg",
-      angles: {
-        front: "/view_2.jpg",
-        left: "/view_3.jpg",
-        right: "/watermarked_img_3988630376005458443.jpg",
-        back: "/image_926161.jpg",
-      },
+      id: "undercut",
+      num: "04",
+      title: "UNDERCUT",
+      file: "Undercut.jpg",
+      img: "/Undercut.jpg",
+      length: "Medium Top",
+      fade: "High",
+      hairType: "Straight / Wavy",
     },
     {
-      id: 5,
-      title: "ทรงผมผู้ชาย Undercut",
-      category: "หล่อเนี้ยบ",
-      description: "ทรงผม Undercut ไถเปิดข้างเนียนกริบ ปรับลุคให้ดูหล่อเนี้ยบ ดูแลและเซ็ตทรงง่าย เข้ากับทุกโครงหน้า",
-      tag: "Undercut",
-      likes: "118 likes",
-      img: "/image_926161.jpg",
-      angles: {
-        front: "/image_926161.jpg",
-        left: "/view_2.jpg",
-        right: "/view_3.jpg",
-        back: "/watermarked_img_3988630376005458443.jpg",
-      },
+      id: "skinhead",
+      num: "05",
+      title: "SKINHEAD FADE",
+      file: "Skinhead Fade.jpg",
+      img: "/Skinhead Fade.jpg",
+      length: "Very Short",
+      fade: "High / Bald",
+      hairType: "All types",
     },
     {
-      id: 6,
-      title: "ทรงผมผู้ชาย Skinhead Fade",
-      category: "กวนๆ เท่ๆ",
-      description: "ทรงผม Skinhead Fade ตัดสั้นเกลาเนียนกริบ สไตล์กวนๆ เท่ๆ เบาสบายหัว ไม่ต้องเสียเวลาเซ็ตผม",
-      tag: "SkinheadFade",
-      likes: "156 likes",
-      img: "/watermarked_img_3988630376005458443.jpg",
-      angles: {
-        front: "/watermarked_img_3988630376005458443.jpg",
-        left: "/view_3.jpg",
-        right: "/image_926161.jpg",
-        back: "/view_2.jpg",
-      },
+      id: "ivyleague",
+      num: "06",
+      title: "IVY LEAGUE",
+      file: "Ivy League.jpg",
+      img: "/Ivy League.jpg",
+      length: "Short",
+      fade: "Low",
+      hairType: "Straight / Fine",
     },
   ];
-
-  const scrollCarousel = (direction: "left" | "right") => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === "left" ? -300 : 300;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
-
-  const openLookbookModal = (item: typeof lookbookData[0]) => {
-    setSelectedLookbook(item);
-    setActiveAngle("front");
-  };
 
   return (
     <div className="bg-[#0b0e14] text-[#f1f5f9] min-h-screen font-sans scroll-smooth antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
@@ -502,237 +442,123 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4.5 INSTAGRAM CAROUSEL SHOWCASE (พร้อมการดูมุมมอง 4 ด้าน) */}
-      <section id="lookbook" className="py-16 px-4 max-w-6xl mx-auto border-t border-gray-900">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 border border-red-500/40 px-3 py-1 rounded-full bg-red-950/40 text-red-400 font-mono text-[11px] uppercase tracking-wider mb-2">
-              <span>📸</span> INSTAGRAM LOOKBOOK • CLICK FOR 4-ANGLES
-            </div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white">
-              รีวิวทรงผมลูกค้า <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-white to-blue-500">(คลิกดูมุมมอง 4 ด้าน)</span>
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm mt-1 font-light">
-              เลื่อนสไลด์ดูทรงผม และ <span className="text-red-400 font-medium underline">คลิกที่รูป</span> เพื่อส่องดูรายละเอียดทรงผมได้ครบทั้ง 4 มุม (หน้า-ซ้าย-ขวา-หลัง)
-            </p>
-          </div>
+      {/* 4.5 MINIMAL BARBER & EDITORIAL HAIRSTYLE LOOKBOOK (VERTICAL FEED) */}
+      <section id="lookbook" className="py-24 px-4 max-w-5xl mx-auto border-t border-neutral-800 text-white font-sans">
+        {/* Editorial Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <p className="font-mono text-[11px] tracking-[0.35em] text-neutral-400 uppercase">
+            Editorial Lookbook
+          </p>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-[0.15em] font-serif text-white uppercase">
+            HAIRSTYLE COLLECTION
+          </h3>
+          <div className="w-12 h-[1px] bg-neutral-600 mx-auto my-4"></div>
+          <p className="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+            คู่มือทรงผมสำหรับลูกค้า สไตล์ Minimal & Editorial เรียงแนวตั้งเพื่อความชัดเจนของรูปหน้าและเส้นผม
+          </p>
+        </div>
 
-          {/* Navigation Arrows for Desktop */}
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              onClick={() => scrollCarousel("left")}
-              className="w-10 h-10 rounded-full border border-gray-800 bg-[#131926] hover:border-red-500 hover:text-red-400 text-gray-300 flex items-center justify-center transition active:scale-95 shadow-md"
-              aria-label="Previous Slide"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => scrollCarousel("right")}
-              className="w-10 h-10 rounded-full border border-gray-800 bg-[#131926] hover:border-blue-500 hover:text-blue-400 text-gray-300 flex items-center justify-center transition active:scale-95 shadow-md"
-              aria-label="Next Slide"
-            >
-              →
-            </button>
+        {/* Sticky Filter Bar */}
+        <div className="sticky top-[65px] z-40 bg-[#0b0e14]/95 backdrop-blur-md border-y border-neutral-800 py-3 mb-16 shadow-lg">
+          <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto scrollbar-none px-2 py-1">
+            {editorialLookbookData.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  const el = document.getElementById(`hairstyle-${item.id}`);
+                  if (el) {
+                    const yOffset = -130;
+                    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}
+                className="text-xs font-mono tracking-wider px-4 py-2 rounded-full border border-neutral-800 hover:border-neutral-400 hover:bg-neutral-900 text-neutral-300 transition duration-200 whitespace-nowrap active:scale-95"
+              >
+                {item.title}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Carousel Horizontal Scroll Container */}
-        <div
-          ref={carouselRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory py-2 pb-6 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent scroll-smooth"
-        >
-          {lookbookData.map((item) => (
+        {/* Hairstyle Vertical Feed (6 Blocks) */}
+        <div className="space-y-28 sm:space-y-36">
+          {editorialLookbookData.map((item) => (
             <div
               key={item.id}
-              onClick={() => openLookbookModal(item)}
-              className="flex-none w-[260px] sm:w-[290px] snap-start bg-[#131926] border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500/80 transition-all duration-300 shadow-xl group cursor-pointer hover:-translate-y-1"
+              id={`hairstyle-${item.id}`}
+              className="scroll-mt-36 space-y-6 group"
             >
-              {/* Card IG Header */}
-              <div className="p-3 bg-[#0d121d] flex items-center justify-between border-b border-gray-800/80">
-                <div className="flex items-center gap-2">
-                  <div className="relative w-7 h-7 rounded-full overflow-hidden border border-red-500">
-                    <Image src="/logo.jpg" alt="Logo" fill className="object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white font-mono">phanbarber_official</p>
-                    <p className="text-[9px] text-gray-400 font-mono">Kamphaeng Phet</p>
-                  </div>
+              {/* Block Header: Index & Title */}
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-neutral-800 pb-4 gap-2">
+                <div>
+                  <span className="font-mono text-xs text-neutral-500 tracking-[0.25em] block mb-1">
+                    {item.num} / HAIRSTYLE
+                  </span>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.15em] text-white font-serif uppercase group-hover:text-neutral-300 transition duration-300">
+                    {item.title}
+                  </h4>
                 </div>
-                <span className="text-[10px] text-[#d4af37] font-mono border border-[#d4af37]/40 px-2 py-0.5 rounded-full flex items-center gap-1">
-                  <span>📐</span> 4 มุม
+                <span className="font-mono text-xs text-neutral-500 tracking-widest uppercase">
+                  {item.file}
                 </span>
               </div>
 
-              {/* Card Image */}
-              <div className="relative w-full aspect-square overflow-hidden bg-[#080b10]">
+              {/* Full Width Editorial Image */}
+              <div className="relative w-full aspect-[3/4] sm:aspect-[16/11] rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800/80 shadow-2xl">
                 <Image
                   src={item.img}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition duration-500"
+                  className="object-cover group-hover:scale-102 transition duration-700 ease-out"
+                  priority={item.id === "twoblock"}
                 />
-                <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded-full text-[10px] font-mono">
-                  #{item.tag}
-                </div>
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                  <span className="bg-red-600 text-white text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-lg">
-                    🔍 คลิกดู 4 มุมมอง
+              </div>
+
+              {/* Specs Grid (3 Columns Layout) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#0e121a]/80 p-5 rounded-xl border border-neutral-800/80 backdrop-blur-sm">
+                <div className="border-l-2 border-neutral-700 pl-3.5 space-y-1">
+                  <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block">
+                    ความยาว (LENGTH)
                   </span>
-                </div>
-              </div>
-
-              {/* Card Footer / Caption */}
-              <div className="p-4 space-y-1.5">
-                <div className="flex items-center justify-between text-xs text-gray-400 font-mono">
-                  <span className="text-red-400 font-medium">❤️ {item.likes}</span>
-                  <span className="text-[10px] text-blue-400 font-bold group-hover:underline">ดู 4 ด้าน ➔</span>
-                </div>
-                <h4 className="text-base font-bold font-serif text-white group-hover:text-red-400 transition">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-gray-400 font-light truncate">
-                  {item.category}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Swipe Tip */}
-        <p className="text-center text-[11px] text-gray-500 font-mono mt-2 sm:hidden">
-          👉 แตะที่รูปทรงผมเพื่อส่องดูรายละเอียดครบ 4 ด้าน (หน้า-ซ้าย-ขวา-หลัง) 👈
-        </p>
-      </section>
-
-      {/* 4-ANGLE INTERACTIVE HAIRSTYLE MODAL */}
-      {selectedLookbook && (
-        <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-          <div className="relative max-w-4xl w-full bg-[#0d121d] border border-red-500/50 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedLookbook(null)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 hover:bg-red-600 text-white flex items-center justify-center font-bold text-lg transition duration-200 border border-gray-700 shadow-lg"
-              aria-label="Close Modal"
-            >
-              ✕
-            </button>
-
-            {/* Left Column: Image Viewer & Angle Selector */}
-            <div className="md:w-1/2 p-6 flex flex-col items-center justify-center bg-[#080b10] border-b md:border-b-0 md:border-r border-gray-800">
-              <div className="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-red-500/40 shadow-xl mb-4 group">
-                <Image
-                  src={selectedLookbook.angles[activeAngle]}
-                  alt={`${selectedLookbook.title} - มุม ${activeAngle}`}
-                  fill
-                  className="object-cover transition duration-300"
-                />
-                <div className="absolute top-3 left-3 bg-red-600/90 text-white px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider shadow">
-                  มุม{activeAngle === "front" ? "หน้า" : activeAngle === "left" ? "ซ้าย" : activeAngle === "right" ? "ขวา" : "หลัง"}
-                </div>
-              </div>
-
-              {/* Angle Switcher Buttons (4 มุม) */}
-              <div className="grid grid-cols-4 gap-2 w-full">
-                {[
-                  { key: "front", label: "หน้า" },
-                  { key: "left", label: "ซ้าย" },
-                  { key: "right", label: "ขวา" },
-                  { key: "back", label: "หลัง" },
-                ].map((angle) => {
-                  const isActive = activeAngle === angle.key;
-                  return (
-                    <button
-                      key={angle.key}
-                      onClick={() => setActiveAngle(angle.key as any)}
-                      className={`py-2 px-1 rounded-xl text-xs font-mono font-bold transition duration-200 flex flex-col items-center justify-center gap-1 border ${
-                        isActive
-                          ? "bg-gradient-to-r from-red-600 to-blue-600 text-white border-white shadow-md scale-105"
-                          : "bg-[#131926] text-gray-400 border-gray-800 hover:text-white hover:border-gray-600"
-                      }`}
-                    >
-                      <span className="text-[10px] uppercase">มุม{angle.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Column: Haircut Details & LINE Booking */}
-            <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-mono text-red-400 bg-red-950/60 border border-red-500/40 px-3 py-1 rounded-full uppercase">
-                    #{selectedLookbook.tag}
-                  </span>
-                  <span className="text-xs font-mono text-gray-400">❤️ {selectedLookbook.likes}</span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-bold font-serif text-white">
-                  {selectedLookbook.title}
-                </h3>
-
-                <p className="text-sm font-medium text-[#d4af37]">
-                  {selectedLookbook.category}
-                </p>
-
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light bg-[#131926] p-4 rounded-2xl border border-gray-800">
-                  {selectedLookbook.description}
-                </p>
-
-                <div className="space-y-2 pt-2">
-                  <p className="text-xs font-mono text-gray-400 uppercase tracking-wider">
-                    🔍 พรีวิวตัวอย่างมุมมอง 4 ด้าน:
+                  <p className="text-xs sm:text-sm font-mono text-white font-medium">
+                    {item.length}
                   </p>
-                  <div className="grid grid-cols-4 gap-2">
-                    {[
-                      { key: "front", label: "หน้า" },
-                      { key: "left", label: "ซ้าย" },
-                      { key: "right", label: "ขวา" },
-                      { key: "back", label: "หลัง" },
-                    ].map((item) => (
-                      <div
-                        key={item.key}
-                        onClick={() => setActiveAngle(item.key as any)}
-                        className={`relative aspect-square rounded-xl overflow-hidden border cursor-pointer ${
-                          activeAngle === item.key ? "border-red-500 ring-2 ring-red-500/60 scale-105" : "border-gray-800 opacity-60 hover:opacity-100"
-                        }`}
-                      >
-                        <Image
-                          src={selectedLookbook.angles[item.key as keyof typeof selectedLookbook.angles]}
-                          alt={item.label}
-                          fill
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-black/40 flex items-end justify-center pb-1">
-                          <span className="text-[9px] font-mono text-white font-bold">มุม{item.label}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                </div>
+
+                <div className="border-l-2 border-neutral-700 pl-3.5 space-y-1">
+                  <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block">
+                    ระดับ FADE
+                  </span>
+                  <p className="text-xs sm:text-sm font-mono text-white font-medium">
+                    {item.fade}
+                  </p>
+                </div>
+
+                <div className="border-l-2 border-neutral-700 pl-3.5 space-y-1">
+                  <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block">
+                    สภาพเส้นผม (HAIR TYPE)
+                  </span>
+                  <p className="text-xs sm:text-sm font-mono text-white font-medium">
+                    {item.hairType}
+                  </p>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-4 border-t border-gray-800 flex flex-col sm:flex-row gap-3">
+              {/* Action Link to LINE */}
+              <div className="flex justify-end pt-2">
                 <a
                   href={lineLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 rounded-full font-semibold text-xs sm:text-sm text-center shadow-[0_0_20px_rgba(16,185,129,0.3)] transition duration-300 flex items-center justify-center gap-2"
+                  className="inline-flex items-center gap-2 text-xs font-mono text-emerald-400 hover:text-emerald-300 transition duration-200 border-b border-emerald-500/30 hover:border-emerald-400 pb-1"
                 >
-                  <span>💬</span> สอบถามทรงนี้ผ่าน LINE
+                  <span>💬</span> สอบถามทรง {item.title} ผ่าน LINE ➔
                 </a>
-                <button
-                  onClick={() => setSelectedLookbook(null)}
-                  className="px-6 py-3.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-full font-mono text-xs transition"
-                >
-                  ปิดหน้าต่าง
-                </button>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      )}
+      </section>
 
       {/* 5. SHOP VIEW SECTION */}
       <section id="shop-view" className="py-20 md:py-24 bg-[#080b10] px-4 border-y border-gray-900">
