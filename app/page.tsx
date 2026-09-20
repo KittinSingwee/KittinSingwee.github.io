@@ -33,12 +33,12 @@ export default function Home() {
       description: "ทรงผม มัลเล็ต (Mullet) ผมสุดเก๋สไตล์ย้อนยุค ปล่อยยาวช่วงท้ายทอย เพิ่มความชิคและมีเอกลักษณ์ กลับมาฮิตอย่างต่อเนื่อง",
       tag: "Mullet",
       likes: "128 likes",
-      img: "/image_926161.jpg",
+      img: "/Mullet Mullet-front.png",
       angles: {
-        front: "/image_926161.jpg",
-        left: "/watermarked_img_3988630376005458443.jpg",
-        right: "/view_3.jpg",
-        back: "/view_2.jpg",
+        front: "/Mullet Mullet-front.png",
+        left: "/Mullet Mullet-left.png",
+        right: "/Mullet Mullet-right.png",
+        back: "/Mullet Mullet-Back.png",
       },
     },
     {
